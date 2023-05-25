@@ -1,0 +1,66 @@
+CREATE DATABASE  IF NOT EXISTS `main` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `main`;
+-- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: main
+-- ------------------------------------------------------
+-- Server version	8.0.33
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `userId` varchar(36) NOT NULL,
+  `isAdmin` tinyint NOT NULL DEFAULT '0',
+  `createdById` varchar(255) NOT NULL,
+  `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `updated_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `UpdatedById` varchar(255) NOT NULL DEFAULT '',
+  `pfxFilepath` varchar(255) NOT NULL DEFAULT '',
+  `pfxFileName` varchar(255) NOT NULL DEFAULT '',
+  `pfxUpdatedBy` varchar(255) NOT NULL DEFAULT '',
+  `token` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`userId`),
+  UNIQUE KEY `IDX_fe0bb3f6520ee0469504521e71` (`username`),
+  UNIQUE KEY `IDX_97672ac88f789774dd47f7c8be` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES ('Shivam','shivam@example.com','$2b$10$Mlmdo7KAt5YUaHphRXRiWOUCIe2JmkbBIfYIcZZCHZBu4ilIcz3tq','0c53940e-94fa-4a54-807b-ac688e225a80',0,'b859e976-cab7-416a-b52b-c2cc55711094','2023-05-03 10:26:44.651692','2023-05-06 14:58:01.000000','','','','','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoaXZhbUBleGFtcGxlLmNvbSIsInVzZXJJZCI6IjBjNTM5NDBlLTk0ZmEtNGE1NC04MDdiLWFjNjg4ZTIyNWE4MCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2ODMzNjUyODEsImV4cCI6MTY4MzM2ODg4MX0.nrbemqYmAOlecdJwMeviqHVDt8kHayTx37lNK88SEhQ'),('Kamal','kamal@example.com','$2b$10$18rcvYs52PIjepSR2BU4ye/Bhr7M8Ni2kvOo3SAr7P8o6ozJ7f3sy','1192270b-0d85-441d-a3d0-de7be6c6703f',0,'9a8ce2f5-0255-4bfb-a939-0c313b9f380e','2023-05-02 14:18:49.285327','2023-05-02 18:50:45.000000','','uploads\\file-1683033645095-951391488.pfx','file-1683033645095-951391488.pfx','1192270b-0d85-441d-a3d0-de7be6c6703f',''),('niks','niks@example.com','$2b$10$poDwTgtqFjZtpYz5nqdbaOkMxSoK1AehduoY/nNeWlz0gR3pPkkeW','1990b221-aa69-4e98-9d98-3fbe80c96ee6',0,'9a8ce2f5-0255-4bfb-a939-0c313b9f380e','2023-05-01 17:02:02.974616','2023-05-03 10:31:46.000000','b859e976-cab7-416a-b52b-c2cc55711094','uploads\\file-1683034918995-842338306.pfx','file-1683034918995-842338306.pfx','ee39e21a-d00c-49ea-81c6-7e4cbfd83129',''),('Arpit','arpit@example.com','$2b$10$VEcQvUGYk927JHQa9W6v0uMaXmNq0pQjyl6UxylGF81XN.wyNA4M.','a531d850-2a65-4b10-afa1-5444d9d76f6c',0,'ee39e21a-d00c-49ea-81c6-7e4cbfd83129','2023-05-02 18:36:15.013480','2023-05-02 18:36:15.013480','','','','',''),('Narayan','narayan@example.com','$2b$10$ZQ8ghRbavDHhhrqNMfHHIOjxrkV9Vc7pFoV4UtIq8qxD41tzPOUD6','b859e976-cab7-416a-b52b-c2cc55711094',1,'ee39e21a-d00c-49ea-81c6-7e4cbfd83129','2023-05-02 18:59:04.371901','2023-05-02 18:59:04.371901','','','','',''),('Aman','aman@example.com','$2b$10$.Ta.Hucg/wVUJDyxHv9OSeASwvg/zj2Q.LfnwEQcCxnD1QoiH488W','d15e9b67-95aa-4e85-b305-492bf96f52ed',0,'ee39e21a-d00c-49ea-81c6-7e4cbfd83129','2023-05-02 15:13:13.195397','2023-05-02 15:13:13.195397','ee39e21a-d00c-49ea-81c6-7e4cbfd83129','','','',''),('Narendra','narendra@example.com','$2b$10$j4jIHwGLX0OLEwMRVNjfguPXJnrAK.mm6GZgQ6nGrS680Hvbyzzim','ee39e21a-d00c-49ea-81c6-7e4cbfd83129',1,'9a8ce2f5-0255-4bfb-a939-0c313b9f380e','2023-05-01 17:06:15.714109','2023-05-06 15:10:39.000000','','','','','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hcmVuZHJhQGV4YW1wbGUuY29tIiwidXNlcklkIjoiZWUzOWUyMWEtZDAwYy00OWVhLTgxYzYtN2U0Y2JmZDgzMTI5IiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjgzMzY2MDM5LCJleHAiOjE2ODMzNjk2Mzl9.JnxZGKpHkCiB_2Z0BVFsEK87NfOP06VNECE4zQIrOWw'),('Ankit','ankit@example.com','$2b$10$r6TZoVFKdtQoJ4v4sO73L.G5ISMCx95tX0ZIyKazR4gocodHFAZfu','f3c37d6a-690e-4ef9-a37e-6918023e24c2',1,'ee39e21a-d00c-49ea-81c6-7e4cbfd83129','2023-05-02 12:04:42.730811','2023-05-06 15:08:55.000000','','uploads\\file-1683107790851-292779348.pfx','file-1683107790851-292779348.pfx','b859e976-cab7-416a-b52b-c2cc55711094','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFua2l0QGV4YW1wbGUuY29tIiwidXNlcklkIjoiZjNjMzdkNmEtNjkwZS00ZWY5LWEzN2UtNjkxODAyM2UyNGMyIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjgzMzY1OTM1LCJleHAiOjE2ODMzNjk1MzV9.WhoHJUQqlXhbBAH8o9T57TS2jdAH3d1SKkB32-jHX8Q');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-05-09 11:32:27
